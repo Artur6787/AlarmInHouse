@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 
     private int _currentPoint;
 
-    private void Start()
+    private void Awake()
     {
         _points = new Transform[_path.childCount];
 
@@ -25,12 +25,7 @@ public class Enemy : MonoBehaviour
 
         if (transform.position == target.position)
         {
-            _currentPoint++;
-
-            if (_currentPoint >= _points.Length)
-            {
-                _currentPoint = 0;
-            }
+            _currentPoint = (_currentPoint + 1) % _points.Length;
         }
     }
 }
